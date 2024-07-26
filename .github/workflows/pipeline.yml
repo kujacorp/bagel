@@ -1,0 +1,19 @@
+name: bagel CI
+
+on: [push]
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.0.0
+    - name: Make binary
+      run: |
+        make bagel
+        tar -cvf bagel.tar ./bagel
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: bagel.tar
+        path: ./bagel.tar
