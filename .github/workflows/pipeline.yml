@@ -11,8 +11,9 @@ jobs:
     - name: Make binary
       run: |
         make bagel
+        tar -cvf bagel.tar ./bagel
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: bagel
-        path: ./bagel
+        name: bagel.tar
+        path: ./bagel.tar
